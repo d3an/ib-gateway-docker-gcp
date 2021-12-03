@@ -25,7 +25,7 @@ Despite being optimised for GCP, this still works nicely in a local Docker insta
 
 ## Getting Started
 
-Due to file size constraints, you **must** download the IB Gateway script from Interactive Brokers in order to build the containers. The most recent version is 981.3d. If that gets bumped beyond 981, this repo might require updates. Run the following:
+Due to file size constraints, you **must** download the IB Gateway script from Interactive Brokers in order to build the containers. The most recent version is 981.3e. If that gets bumped beyond 981, this repo might require updates. Run the following:
 
 ```commandline
 wget -O ibgateway-stable-standalone-linux-9813e-x64.sh https://download2.interactivebrokers.com/installers/ibgateway/stable-standalone/ibgateway-stable-standalone-linux-x64.sh
