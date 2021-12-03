@@ -6,7 +6,7 @@ LABEL maintainers="Dimitri Vasdekis <dvasdekis@gmail.com>,James Bury <jabury@uwa
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/Toronto
 ENV TWS_MAJOR_VRSN=981
-ENV IBC_VERSION=3.11.0
+ENV IBC_VERSION=3.11.1
 ENV IBC_INI=/root/IBController/IBController.ini
 ENV IBC_PATH=/opt/IBController
 ENV TWS_PATH=/root/Jts
@@ -21,7 +21,7 @@ RUN apt-get -qq update -y && apt-get -qq install -y unzip xvfb libxtst6 libxrend
 # Setup IB TWS
 RUN mkdir -p /opt/TWS
 WORKDIR /opt/TWS
-COPY ./ibgateway-stable-standalone-linux-9813d-x64.sh /opt/TWS/ibgateway-stable-standalone-linux-x64.sh
+COPY ./ibgateway-stable-standalone-linux-9813e-x64.sh /opt/TWS/ibgateway-stable-standalone-linux-x64.sh
 RUN chmod a+x /opt/TWS/ibgateway-stable-standalone-linux-x64.sh
 
 # Install IBController

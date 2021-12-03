@@ -13,11 +13,11 @@ Despite being optimised for GCP, this still works nicely in a local Docker insta
 
 ### Latest Versions
 
-* TWS Gateway: v981.3d (Current Stable): 
+* TWS Gateway: v981.3e (Current Stable): 
   * **Must download script [here](https://download2.interactivebrokers.com/installers/ibgateway/stable-standalone/ibgateway-stable-standalone-linux-x64.sh) prior to building containers.
     It's too large for GitHub.**
-* IBC (new IB Controller): v3.11.0
-* ib_insync: v0.9.69
+* IBC (new IB Controller): v3.11.1
+* ib_insync: v0.9.70
 
 ### Docker Hub image
 
