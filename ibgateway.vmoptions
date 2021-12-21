@@ -1,5 +1,5 @@
 #
-# This file contains VM parameters for IB Gateway 978.
+# This file contains VM parameters for IB Gateway 981.
 # Each parameter should be defined in a separate line and the
 # last line must be followed by a line feed. No leading or
 # trailing whitespaces are allowed in the same line, where a
@@ -32,7 +32,7 @@
 
 
 -Dinstaller.uuid=ffa5c054-0b73-4c18-b588-1933a1a85d4f
--DvmOptionsPath=/root/Jts/ibgateway/978/ibgateway.vmoptions
+-DvmOptionsPath=/root/Jts/ibgateway/981/ibgateway.vmoptions
 -Dsun.awt.nopixfmt=true
 -Dsun.java2d.noddraw=true
 -Dswing.boldMetal=false
