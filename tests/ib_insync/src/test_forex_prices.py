@@ -19,8 +19,8 @@ logging.info("Reporting INFO-level messages")
 def connect_to_ib():
     # Connect to market gateway
     ibinstance = ib_insync.IB()
-    ibinstance.connect(host=os.getenv('IB_GATEWAY_URLNAME', 'tws'),
-                       port=int(os.getenv('IB_GATEWAY_URLPORT', '4004')),
+    ibinstance.connect(host=os.getenv('IB_GATEWAY_PAPER_URLNAME', 'tws-paper'),
+                       port=int(os.getenv('IB_GATEWAY_PAPER_URLPORT', '4004')),
                        clientId=int(os.getenv('EFP_CLIENT_ID', (5+random.randint(0, 4)))),
                        timeout=15,
                        readonly=True)
