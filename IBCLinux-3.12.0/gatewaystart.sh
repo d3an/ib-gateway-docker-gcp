@@ -2,7 +2,7 @@
 
 #=============================================================================+
 #                                                                             +
-#   This command file starts the Interactive Brokers' Trader Workstation.     +
+#   This command file starts the Interactive Brokers' Gateway.                +
 #                                                                             +
 #   If you run it without any arguments it will display a new window showing  +
 #   useful information and then start the Gateway. If you supply -inline as   +
@@ -28,6 +28,8 @@ TWS_SETTINGS_PATH=
 LOG_PATH=~/ibc/logs
 TWSUSERID=
 TWSPASSWORD=
+FIXUSERID=
+FIXPASSWORD=
 JAVA_PATH=
 HIDE=
 
@@ -40,15 +42,22 @@ HIDE=
 
 #   TWS_MAJOR_VRSN
 #
-#     Specifies the major version number of TWS to be run. If you are
-#     unsure of which version number to use, run TWS manually from the
-#     icon on the desktop, then click Help > About Trader Workstation. In the
-#     displayed information you'll see a line similar to this:
+#     Specifies the major version number of Gateway to be run. If you are
+#     unsure of which version number to use, run Gateway manually from the
+#     icon on the desktop, then click Help > About IB Gateway. In the
+#     displayed information you'll see a line similar to either this:
 #
-#       Build 954.2a, Oct 30, 2015 4:07:54 PM
+#       Build 981.3c, Jun 29, 2021 3:57:06 PM
 #
-#     Here the major version number is 954. Do not include the rest of the
-#     version number in this setting.
+#     or this:
+#
+#       Build 10.12.2a, Dec 14, 2021 11:07:54 AM
+#
+#     In the first case, the major version number is 981. In the second case,
+#     it is 1012 (ie ignore the period after the first past of the version
+#     number).
+#
+#     Do not include the rest of the version number in this setting.
 
 
 #   IBC_INI
@@ -96,11 +105,11 @@ HIDE=
 
 #   TWS_PATH
 #
-#     The folder where TWS is installed. The TWS installer always installs to
-#     ~/Jts. Note that even if you have installed from a Gateway download
-#     rather than a TWS download, you should still use this default setting.
-#     It is possible to move the TWS installation to a different folder, but
-#     there are virtually no good reasons for doing so.
+#     The folder where Gateway is installed. The Gateway installer always
+#     installs to ~/Jts. Note that even if you have installed from a Gateway
+#     download rather than a TWS download, you should still use this default
+#     setting. It is possible to move the TWS installation to a different
+#     folder, but there are virtually no good reasons for doing so.
 
 
 #   TWS_SETTINGS_PATH
@@ -129,7 +138,17 @@ HIDE=
 #   TWSPASSWORD
 #
 #     If your TWS user id and password are not included in your IBC
-#     configuration file, you can set them here (do not encrypt the password).
+#     configuration file, you can set them here. However you are strongly
+#     advised not to set them here because this file is not normally in a
+#     protected location.
+
+
+#   FIXUSERID
+#   FIXPASSWORD
+#
+#     If you are running the FIX Gateway (for which you must set FIX=yes in
+#     your IBC configuration file), and the FIX user id and password
+#     are not included in the configuration file, you can set them here.
 #     However you are strongly advised not to set them here because this file
 #     is not normally in a protected location.
 
@@ -162,7 +181,7 @@ if [[ -n $(/usr/bin/pgrep -f "java.*${IBC_INI}") ]]; then
 	>&2 exit 1
 fi
 
-APP=TWS
+APP=GATEWAY
 
 export TWS_MAJOR_VRSN
 export IBC_INI
@@ -174,6 +193,8 @@ export TWS_SETTINGS_PATH
 export LOG_PATH
 export TWSUSERID
 export TWSPASSWORD
+export FIXUSERID
+export FIXPASSWORD
 export JAVA_PATH
 export APP
 

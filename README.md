@@ -13,10 +13,10 @@ Despite being optimised for GCP, this still works nicely in a local Docker insta
 
 ### Latest Versions
 
-* TWS Gateway: v981.3e (Current Stable): 
+* TWS Gateway: v981.3g (Current Stable): 
   * **Must download script [here](https://download2.interactivebrokers.com/installers/ibgateway/stable-standalone/ibgateway-stable-standalone-linux-x64.sh) prior to building containers.
     It's too large for GitHub.**
-* IBC (new IB Controller): v3.11.1
+* IBC (new IB Controller): v3.12.0
 * ib_insync: v0.9.70
 
 ### Docker Hub image
@@ -25,10 +25,10 @@ Despite being optimised for GCP, this still works nicely in a local Docker insta
 
 ## Getting Started
 
-Due to file size constraints, you **must** download the IB Gateway script from Interactive Brokers in order to build the containers. The most recent version is 981.3e. If that gets bumped beyond 981, this repo might require updates. Run the following:
+Due to file size constraints, you **must** download the IB Gateway script from Interactive Brokers in order to build the containers. The most recent version is 981.3g. If that gets bumped beyond 981, this repo might require updates. Run the following:
 
 ```commandline
-wget -O ibgateway-stable-standalone-linux-9813e-x64.sh https://download2.interactivebrokers.com/installers/ibgateway/stable-standalone/ibgateway-stable-standalone-linux-x64.sh
+wget -O ibgateway-stable-standalone-linux-981-3g-x64.sh https://download2.interactivebrokers.com/installers/ibgateway/stable-standalone/ibgateway-stable-standalone-linux-x64.sh
 ```
 
 Start an instance locally using Docker-Compose.

@@ -2,13 +2,17 @@ FROM ubuntu:20.04
 
 LABEL maintainers="Dimitri Vasdekis <dvasdekis@gmail.com>,James Bury <jabury@uwaterloo.ca>"
 
+# Set Args
+ARG TRADING_MODE
+
 # Set Env vars
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/Toronto
 ENV TWS_MAJOR_VRSN=981
-ENV IBC_VERSION=3.11.1
+ENV TWS_MINOR_VRSN=3g
+ENV IBC_VERSION=3.12.0
 ENV IBC_INI=/root/IBController/IBController.ini
-ENV IBC_PATH=/opt/IBController
+ENV IBC_PATH=/opt/IBController/
 ENV TWS_PATH=/root/Jts
 ENV TWS_CONFIG_PATH=/root/Jts
 ENV LOG_PATH=/opt/IBController/Logs
@@ -21,7 +25,7 @@ RUN apt-get -qq update -y && apt-get -qq install -y unzip xvfb libxtst6 libxrend
 # Setup IB TWS
 RUN mkdir -p /opt/TWS
 WORKDIR /opt/TWS
-COPY ./ibgateway-stable-standalone-linux-9813e-x64.sh /opt/TWS/ibgateway-stable-standalone-linux-x64.sh
+COPY ./ibgateway-stable-standalone-linux-${TWS_MAJOR_VRSN}-${TWS_MINOR_VRSN}-x64.sh /opt/TWS/ibgateway-stable-standalone-linux-x64.sh
 RUN chmod a+x /opt/TWS/ibgateway-stable-standalone-linux-x64.sh
 
 # Install IBController
@@ -40,9 +44,9 @@ RUN rm /opt/TWS/ibgateway-stable-standalone-linux-x64.sh
 ENV DISPLAY :0
 
 # Below files copied during build to enable operation without volume mount
-COPY ./ib/IBController.ini /root/IBController/IBController.ini
+COPY ./ib/$TRADING_MODE/IBController.ini /root/IBController/IBController.ini
 RUN mkdir -p /root/Jts/
-COPY ./ib/jts.ini /root/Jts/jts.ini
+COPY ./ib/$TRADING_MODE/jts.ini /root/Jts/jts.ini
 
 # Overwrite vmoptions file
 RUN rm -f /root/Jts/ibgateway/${TWS_MAJOR_VRSN}/ibgateway.vmoptions
@@ -53,6 +57,6 @@ RUN pip3 install supervisor
 
 COPY ./restart-docker-vm.py /root/restart-docker-vm.py
 
-COPY ./supervisord.conf /root/supervisord.conf
+COPY ./ib/$TRADING_MODE/supervisord.conf /root/supervisord.conf
 
 CMD /usr/bin/supervisord -c /root/supervisord.conf

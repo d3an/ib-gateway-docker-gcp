@@ -1,13 +1,16 @@
 version: '3.4'
 services:
-  tws:
-    build: .
-    #image: dvasdekis/ib-gateway-docker:v978
+  tws-paper:
+    build:
+      context: .
+      args:
+        TRADING_MODE: paper
+    # image: dvasdekis/ib-gateway-docker:v978
     volumes:
-      - ./ib/IBController.ini:/root/IBController/IBController.ini
-      - ./ib/jts.ini:/root/Jts/jts.ini
+      - ./ib/paper/IBController.ini:/root/IBController/IBController.ini
+      - ./ib/paper/jts.ini:/root/Jts/jts.ini
     environment:
-      - TRADING_MODE=${TWS_TRADING_MODE}
+      - TRADING_MODE=paper
       - TWSUSERID=${TWS_USER_ID}
       - TWSPASSWORD=${TWS_PASSWORD}
       - TWSMAJORVRSN=981
@@ -15,15 +18,36 @@ services:
       - FIXPASSWORD=
       - XVFB_ARGS="-ac -screen 0 1024x768x16 +extension RANDR"
     restart: always
-#   Uncomment the below to use VNC
     ports:
       - 5901:5900
+  tws-live:
+    build:
+      context: .
+      args:
+        TRADING_MODE: live
+    volumes:
+      - ./ib/live/IBController.ini:/root/IBController/IBController.ini
+      - ./ib/live/jts.ini:/root/Jts/jts.ini
+    environment:
+      - TRADING_MODE=live
+      - TWSUSERID=${TWS_USER_ID}
+      - TWSPASSWORD=${TWS_PASSWORD}
+      - TWSMAJORVRSN=981
+      - FIXUSERID=
+      - FIXPASSWORD=
+      - XVFB_ARGS="-ac -screen 0 1024x768x16 +extension RANDR"
+    restart: always
+    ports:
+      - 5900:5900
   test:
     build: tests/ib_insync
     environment:
-      - IB_GATEWAY_URLNAME=tws
-      - IB_GATEWAY_URLPORT=4004
+      - IB_GATEWAY_PAPER_URLNAME=tws-paper
+      - IB_GATEWAY_PAPER_URLPORT=4004
+      - IB_GATEWAY_LIVE_URLNAME=tws-live
+      - IB_GATEWAY_LIVE_URLPORT=4003
       - MKT_DATA_TYPE=4
     restart: on-failure
     depends_on:
-      - tws
+      - tws-paper
+      - tws-live
