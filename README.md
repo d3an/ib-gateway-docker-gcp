@@ -34,13 +34,13 @@ This repo is built on [mvberg's](https://github.com/mvberg/ib-gateway-docker) an
 
 #### dvasdekis
 
-* Replaces IB Controller with IBC
-* Ubuntu 20.04
+* Replaced IB Controller with IBC
+* Ubuntu 16.04 → 20.04
 * Removed installers after use
-* Works with Stackdriver logging
-* Optimization of the Java runtime options
+* Compatible with Stackdriver logging
+* Optimization of Java runtime options
 * VNC scripting (which didn't restart the container on error) fixed via Supervisor
-* Optimized for an e2-small instance on GCP
+* Optimized for e2-small instance on GCP
 
 #### d3an
 
@@ -68,12 +68,12 @@ To start an instance on Google Cloud:
 ### Troubleshooting
 
 ##### Read-Only API warning:
-IBC has decided not to support switching off the Read-Only checkbox (on by default) on the API Settings page.
+IBC has decided to not support switching off the Read-Only checkbox (on by default) on the API Settings page.
 
-To work around it for some operations, you'll need to write a file called ibg.xml as a new file to `/root/Jts/*encrypted user id*/ibg.xml`. The ibg.xml file can be found in this folder after a succesful run and close, and contains the application's settings from the previous run.
+To work around it for some operations, you'll need to write a file named `ibg.xml` to `/root/Jts/*encrypted user id*/ibg.xml`. The ibg.xml file can be found in this folder after a successful run and close, and contains the application's settings from the previous run.
 
 ##### 
-Sometimes, when running in non-daemon mode, you will see this:
+Sometimes, when running in non-daemon mode, you'll see this:
 
 ```java
 Exception in thread "main" java.awt.AWTError: Can't connect to X11 window server using ':0' as the value of the DISPLAY variable.
