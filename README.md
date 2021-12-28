@@ -2,7 +2,7 @@
 
 ### Latest Versions
 
-* **IB Gateway:** `v981.3g`
+* **IB Gateway:** `v10.12.2d`
 * **IBC:** `v3.12.0`
 * **ib_insync:** `v0.9.70`
 
@@ -10,9 +10,9 @@
 
 ### Getting Started
 
-1. Download the IB Gateway (Linux 64-bit) installation script from [here](https://download2.interactivebrokers.com/installers/ibgateway/stable-standalone/ibgateway-stable-standalone-linux-x64.sh) or run the following command from the project directory:
+1. Download the IB Gateway (Linux 64-bit) latest installation script from [here](https://download2.interactivebrokers.com/installers/ibgateway/latest-standalone/ibgateway-latest-standalone-linux-x64.sh) or run the following command from the project directory:
 ```commandline
-wget -O ibgateway-stable-standalone-linux-981-3g-x64.sh https://download2.interactivebrokers.com/installers/ibgateway/stable-standalone/ibgateway-stable-standalone-linux-x64.sh
+wget -O ibgateway-stable-standalone-linux-1012-2d-x64.sh https://download2.interactivebrokers.com/installers/ibgateway/latest-standalone/ibgateway-latest-standalone-linux-x64.sh
 ```
 2. Make sure the script is renamed to `ibgateway-stable-standalone-linux-${TWS_MAJOR_VRSN}-${TWS_MINOR_VRSN}-x64.sh`.
 3. Update `Dockerfile`'s environment variables with the corresponding `TWS_MAJOR_VRSN` and `TWS_MINOR_VRSN`.

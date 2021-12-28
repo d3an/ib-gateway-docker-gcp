@@ -13,7 +13,7 @@ services:
       - TRADING_MODE=paper
       - TWSUSERID=${TWS_USER_ID}
       - TWSPASSWORD=${TWS_PASSWORD}
-      - TWSMAJORVRSN=981
+      - TWSMAJORVRSN=1012
       - FIXUSERID=
       - FIXPASSWORD=
       - XVFB_ARGS="-ac -screen 0 1024x768x16 +extension RANDR"
@@ -32,7 +32,7 @@ services:
       - TRADING_MODE=live
       - TWSUSERID=${TWS_USER_ID}
       - TWSPASSWORD=${TWS_PASSWORD}
-      - TWSMAJORVRSN=981
+      - TWSMAJORVRSN=1012
       - FIXUSERID=
       - FIXPASSWORD=
       - XVFB_ARGS="-ac -screen 0 1024x768x16 +extension RANDR"
