@@ -6,18 +6,11 @@
 * **IBC:** `v3.12.0`
 * **ib_insync:** `v0.9.70`
 
-<br/>
-
 ### Getting Started
 
-1. Download the IB Gateway (Linux 64-bit) latest installation script from [here](https://download2.interactivebrokers.com/installers/ibgateway/latest-standalone/ibgateway-latest-standalone-linux-x64.sh) or run the following command from the project directory:
-```commandline
-wget -O ibgateway-stable-standalone-linux-1012-2h-x64.sh https://download2.interactivebrokers.com/installers/ibgateway/latest-standalone/ibgateway-latest-standalone-linux-x64.sh
-```
-2. Make sure the script is renamed to `ibgateway-stable-standalone-linux-${TWS_MAJOR_VRSN}-${TWS_MINOR_VRSN}-x64.sh`.
-3. Update `Dockerfile`'s environment variables with the corresponding `TWS_MAJOR_VRSN` and `TWS_MINOR_VRSN`.
-4. Set `TWS_USER_ID` and `TWS_PASSWORD` respectively in your system's environment.
-5. Run the following:
+1. Download the latest IB Gateway installation script from [here](https://github.com/d3an/ib-gateway-docker-v1012/releases) to your cloned repo.
+2. Set `TWS_USER_ID` and `TWS_PASSWORD` respectively in your system's environment.
+3. Run the following:
 ```commandline
 docker-compose up --build
 ```
